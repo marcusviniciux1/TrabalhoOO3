@@ -3,12 +3,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class VendaTest {
-
+/*
     @Test
     void deveVerificarQtdeInvalidaMinima() {
         try {
-            Venda venda = new Venda();
-            venda.setQtdeVendida(0);
+            Comercio venda = new Comercio(0);
         } catch (IllegalArgumentException e) {
             assertEquals("Quantidade inválida!", e.getMessage());
         }
@@ -17,8 +16,7 @@ class VendaTest {
     @Test
     void deveVerificarVendaMaxima() {
         try {
-            Venda venda = new Venda();
-            venda.setQtdeVendida(1001);
+            Comercio venda = new Comercio(1001);
         } catch (IllegalArgumentException e) {
             assertEquals("Quantidade além do estoque!", e.getMessage());
         }
@@ -26,37 +24,54 @@ class VendaTest {
 
     @Test
     void deveVerificarCustoLivrosTerror() {
-        Venda venda = new Venda();
-        venda.setQtdeVendida(1000);
+        Comercio venda = new Comercio(1000);
         assertEquals(45000, venda.lucroLivrosVendidosTerror());
     }
 
     @Test
     void deveVerificarCustoLivrosFiccao() {
-        Venda venda = new Venda();
-        venda.setQtdeVendida(1000);
+        Comercio venda = new Comercio(1000);
         assertEquals(60000, venda.lucroLivrosVendidosFiccao());
     }
 
     @Test
     void deveVerificarCustoEscolar() {
-        Venda venda = new Venda();
-        venda.setQtdeVendida(1000);
+        Comercio venda = new Comercio(1000);
         assertEquals(25000, venda.lucroLivrosVendidosEscolar());
     }
 
     @Test
     void deveVerificarCustoLivrosRomance() {
-        Venda venda = new Venda();
-        venda.setQtdeVendida(1000);
+        Comercio venda = new Comercio(1000);
         assertEquals(35000, venda.lucroLivrosVendidosRomance());
     }
 
     @Test
     void deveVerificarCustoLivrosReligiao() {
-        Venda venda = new Venda();
-        venda.setQtdeVendida(1000);
-        assertEquals(15000,venda.lucroLivrosVendidosReligiao());
+        Comercio venda = new Comercio(1000);
+        assertEquals(15000, venda.lucroLivrosVendidosReligiao());
     }
+
+    @Test
+    void deveVerificarLucroTotal() {
+        Comercio venda1 = new Comercio();
+        Comercio venda2 = new Comercio();
+        Comercio comercio3 = new Comercio();
+        Comercio venda4 = new Comercio();
+        Comercio venda5 = new Comercio();
+
+        venda1.vendaLivroTerror(10);
+        venda2.vendaLivroFiccao(10);
+        comercio3.vendaLivroEscolar(10);
+        venda4.vendaLivroRomace(10);
+        venda5.vendaLivroReligiao(10);
+
+
+
+        //assertEquals(1800, lucro.lucroTotalLivros());
+    }
+
+    //APAGAR
+*/
 
 }

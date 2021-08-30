@@ -6,6 +6,7 @@ public class Parametros_Venda {
     private final static float VALOR_LIVRO_ROMANCE = 35.0F;
     private final static float VALOR_LIVRO_RELIGIAO = 15.0f;
 
+
     public static float getValorLivroFiccao() {
         return VALOR_LIVRO_FICCAO;
     }

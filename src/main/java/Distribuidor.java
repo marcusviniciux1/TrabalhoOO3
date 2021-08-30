@@ -1,8 +1,17 @@
-public class Compra {
+public class Distribuidor {
 
     private Pessoa Fornecedor;
     private int qtdeComprada;
 
+    public Distribuidor(int qtdeComprada) {
+        if (qtdeComprada <= 0) {
+            throw new IllegalArgumentException("Quantidade inválida!");
+        } else if (qtdeComprada > 1000) {
+            throw new IllegalArgumentException(("Quantidade acima do limite de estoque"));
+        }
+        this.qtdeComprada = qtdeComprada;
+    }
+/*
     public int getQtdeComprada() {
         return qtdeComprada;
     }
@@ -15,6 +24,7 @@ public class Compra {
         }
         this.qtdeComprada = qtdeComprada;
     }
+ */
 
     public float valorGastoCompraLivrosTerror() {
         return qtdeComprada * Parametros_Compra.getValorCustoTerror();
