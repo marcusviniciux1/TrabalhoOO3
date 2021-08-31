@@ -1,7 +1,7 @@
 public class Comercio {
 
     private Pessoa cliente;
-    //private int qtdeTotalVendida;
+    private Livros autor;
     private int dataVenda;
     private float lucroTotal;
 
@@ -11,86 +11,88 @@ public class Comercio {
     private int qtdeVendidaReligiao;
     private int qtdeVendidaRomance;
 
-    /*
-    public Comercio(int qtdeVendida) {
-        if (qtdeVendida <= 0) {
-            throw new IllegalArgumentException("Quantidade inválida!");
-        } else if (qtdeVendida > 1000) {
-            throw new IllegalArgumentException("Quantidade além do estoque!");
-        }
-        this.qtdeVendida = qtdeVendida;
-    }
-     */
-
     public int getQtdeTotalVendida() {
         return qtdeVendidaTerror + qtdeVendidaFiccao + qtdeVendidaEscolar + qtdeVendidaReligiao + qtdeVendidaRomance;
     }
 
+
+    public void vendaLivroTerror(int qtdeVendidaTerror){
+
+        if(qtdeVendidaTerror <= 0){
+            throw new IllegalArgumentException("Venda não permitida!");
+        }
+        else if (qtdeVendidaTerror > 200){
+            throw new IllegalArgumentException("Venda além do limite do estoque!");
+        }
+        this.qtdeVendidaTerror = qtdeVendidaTerror;
+    }
+
     public void vendaLivroFiccao(int qtdeVendidaFiccao){
         if(qtdeVendidaFiccao <= 0){
-            throw new IllegalArgumentException("Erro aegjerpgna");
+            throw new IllegalArgumentException("Compra não permitida!");
+        }
+        else if (qtdeVendidaFiccao > 200){
+            throw new IllegalArgumentException("Compra além do limite do estoque!");
         }
         this.qtdeVendidaFiccao = qtdeVendidaFiccao;
     }
 
-    public void vendaLivroRomace(int qtdeVendidaRomance){
-        this.qtdeVendidaRomance = qtdeVendidaRomance;
+    public void vendaLivroEscolar(int qtdeVendidaEscolar){
+        if(qtdeVendidaEscolar <= 0){
+            throw new IllegalArgumentException("Venda não permitida!");
+        }
+        else if (qtdeVendidaEscolar  > 200){
+            throw new IllegalArgumentException("Venda além do limite do estoque!");
+        }
+        this.qtdeVendidaEscolar  = qtdeVendidaEscolar ;
+    }
+
+    public void vendaLivroRomance(int qtdeVendidaRomance){
+        if(qtdeVendidaRomance <= 0){
+            throw new IllegalArgumentException("Venda não permitida!");
+        }
+        else if (qtdeVendidaRomance  > 200){
+            throw new IllegalArgumentException("Venda além do limite do estoque!");
+        }
+        this.qtdeVendidaRomance  = qtdeVendidaRomance ;
+
     }
 
     public void vendaLivroReligiao(int qtdeVendidaReligiao){
-        this.qtdeVendidaReligiao = qtdeVendidaReligiao;
-    }
-
-    public void vendaLivroEscolar(int qtdeVendidaEscolar){
-        this.qtdeVendidaEscolar = qtdeVendidaEscolar;
-    }
-
-    public void vendaLivroTerror(int qtdeVendidaTerror){
-        this.qtdeVendidaTerror = qtdeVendidaTerror;
-    }
-
-
-    public int getDataVenda() {
-        return dataVenda;
-    }
-
-    public Pessoa getCliente() {
-        return cliente;
-    }
-
-    /*
-    public void setQtdeVendida(int qtdeVendida) {
-        if (qtdeVendida <= 0) {
-            throw new IllegalArgumentException("Quantidade inválida!");
-        } else if (qtdeVendida > 1000) {
-            throw new IllegalArgumentException("Quantidade além do estoque!");
+        if(qtdeVendidaReligiao <= 0){
+            throw new IllegalArgumentException("Venda não permitida!");
         }
-        this.qtdeVendida = qtdeVendida;
+        else if (qtdeVendidaReligiao  > 200){
+            throw new IllegalArgumentException("Venda além do limite do estoque!");
+        }
+        this.qtdeVendidaReligiao  = qtdeVendidaReligiao ;
     }
- */
 
-    public float lucroLivrosVendidosFiccao() {
-        return this.qtdeVendidaFiccao * Parametros_Venda.getValorLivroFiccao();
-    }
+
 
     public float lucroLivrosVendidosTerror() {
-        return this.qtdeVendidaTerror * Parametros_Venda.getValorLivroTerror();
+        return this.qtdeVendidaTerror * Parametros_Comercio.getValorLivroTerror();
+    }
+
+    public float lucroLivrosVendidosFiccao() {
+        return this.qtdeVendidaFiccao * Parametros_Comercio.getValorLivroFiccao();
     }
 
     public float lucroLivrosVendidosEscolar() {
-        return qtdeVendidaEscolar * Parametros_Venda.getValorLivroEscolar();
+        return qtdeVendidaEscolar * Parametros_Comercio.getValorLivroEscolar();
     }
 
     public float lucroLivrosVendidosRomance() {
-        return qtdeVendidaRomance * Parametros_Venda.getValorLivroRomance();
+        return qtdeVendidaRomance * Parametros_Comercio.getValorLivroRomance();
     }
 
     public float lucroLivrosVendidosReligiao() {
-        return this.qtdeVendidaReligiao * Parametros_Venda.getValorLivroReligiao();
+        return this.qtdeVendidaReligiao * Parametros_Comercio.getValorLivroReligiao();
     }
 
     public float lucroTotalLivros() {
-        return lucroTotal = lucroLivrosVendidosFiccao() + lucroLivrosVendidosReligiao() + lucroLivrosVendidosEscolar() + lucroLivrosVendidosRomance() + lucroLivrosVendidosTerror();
+        return lucroTotal = lucroLivrosVendidosFiccao() + lucroLivrosVendidosReligiao() + lucroLivrosVendidosEscolar() +
+                lucroLivrosVendidosRomance() + lucroLivrosVendidosTerror();
     }
 
 

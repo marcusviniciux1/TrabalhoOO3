@@ -1,5 +1,5 @@
 public interface Funcionario {
 
-    float calcularSalarioBase();
+    float calcularSalario();
 
 }

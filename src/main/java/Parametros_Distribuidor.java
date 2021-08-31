@@ -1,4 +1,4 @@
-public class Parametros_Compra {
+public class Parametros_Distribuidor {
 
     private final static float PRECO_CUSTO_TERROR = 25.0f;
     private final static float PRECO_CUSTO_FICCAO = 20.0f;

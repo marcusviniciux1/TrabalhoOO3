@@ -16,4 +16,5 @@ public class Lucro {
     public float getLucroTotal() {
         return this.lucroTotal;
     }
+
 }

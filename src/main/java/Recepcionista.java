@@ -1,7 +1,7 @@
 public class Recepcionista extends Pessoa implements Funcionario {
 
-    private float salarioRecepcionista;
-    private final static float precoPorLivroVendido = 35.0f;
+    private final static float salarioRecepcionista = 1100;
+    private final static float precoPorLivroVendido = 5.0f;
     private Comercio vendas;
 
     Recepcionista(String nome) {
@@ -12,12 +12,8 @@ public class Recepcionista extends Pessoa implements Funcionario {
         return salarioRecepcionista;
     }
 
-    public void setSalarioRecepcionista(float salarioRecepcionista) {
-        this.salarioRecepcionista = salarioRecepcionista;
-    }
-
     @Override
-    public float calcularSalarioBase() {
-        return salarioRecepcionista * precoPorLivroVendido;
+    public float calcularSalario() {
+        return (salarioRecepcionista + (vendas.getQtdeTotalVendida() * precoPorLivroVendido));
     }
 }

@@ -1,4 +1,4 @@
-public class Parametros_Venda {
+public class Parametros_Comercio {
 
     private final static float VALOR_LIVRO_TERROR = 45.0f;
     private final static float VALOR_LIVRO_FICCAO = 60.0f;
