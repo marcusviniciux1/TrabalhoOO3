@@ -42,7 +42,7 @@ class DistribuidoraTest {
     void deveVerificarQtdeInvalidaCompraMinimaFiccao() {
         try {
             Distribuidora fornecedor = new Distribuidora();
-            fornecedor.compraLivroTerror(0);
+            fornecedor.compraLivroFiccao(0);
         } catch (IllegalArgumentException e) {
             assertEquals("Compra não permitida!", e.getMessage());
         }
@@ -52,7 +52,7 @@ class DistribuidoraTest {
     void deveVerificarQtdeInvalidaCompraMaximaFiccao() {
         try {
             Distribuidora fornecedor = new Distribuidora();
-            fornecedor.compraLivroTerror(201);
+            fornecedor.compraLivroFiccao(201);
         } catch (IllegalArgumentException e) {
             assertEquals("Compra além do limite do estoque!", e.getMessage());
         }
@@ -110,7 +110,7 @@ class DistribuidoraTest {
     void deveVerificarQtdeInvalidaCompraMinimaRomance() {
         try {
             Distribuidora fornecedor = new Distribuidora();
-            fornecedor.compraLivroTerror(0);
+            fornecedor.compraLivroRomance(0);
         } catch (IllegalArgumentException e) {
             assertEquals("Compra não permitida!", e.getMessage());
         }
@@ -177,20 +177,35 @@ class DistribuidoraTest {
     @Test
     void verificaDistribuidoraTemPessoaFornecedorValido(){
         Distribuidora distribuidora = new Distribuidora();
-        Pessoa fornecedor = new Pessoa("Maria");
-        distribuidora.setNomeDistribuidora("MN Livraria");
+        Pessoa fornecedor = new Pessoa("Marcus");
+        distribuidora.setNomeDistribuidora("MN Distribuidora");
 
         distribuidora.setFornecedor(fornecedor);
 
-        assertEquals("Maria", distribuidora.verificaDistribuidoraTemPessoaFornecedor());
+        assertEquals("Marcus", distribuidora.verificaDistribuidoraTemPessoaFornecedor());
+    }
+
+    @Test
+    void deveVerificarTrocaFornecedor(){
+        Distribuidora distribuidora = new Distribuidora();
+        Pessoa fornecedor1 = new Pessoa("Vinícius");
+        distribuidora.setNomeDistribuidora("MN Distribuidora");
+        distribuidora.setFornecedor(fornecedor1);
+
+        Pessoa fornecedor2 = new Pessoa("Nícolas");
+        distribuidora.setFornecedor(fornecedor2);
+
+        assertEquals(fornecedor1.getDistribuidora(), null);
+        assertEquals("Nícolas", distribuidora.verificaDistribuidoraTemPessoaFornecedor());
+        assertEquals(fornecedor2.getNome(), distribuidora.getFornecedor().getNome());
     }
 
     @Test
     void verificaDistribuidoraSemFornecedor(){
         Distribuidora distribuidora = new Distribuidora();
-        distribuidora.setNomeDistribuidora("MN Livraria");
+        distribuidora.setNomeDistribuidora("MN Distribuidora");
 
-        assertEquals("Fornecedor nao informado", distribuidora.verificaDistribuidoraTemPessoaFornecedor());
+        assertEquals("Fornecedor não informado.", distribuidora.verificaDistribuidoraTemPessoaFornecedor());
     }
 
     @Test
@@ -203,7 +218,6 @@ class DistribuidoraTest {
         distribuidora.compraLivroRomance(3);
         distribuidora.compraLivroFiccao(7);
 
-        assertEquals(21, distribuidora.getQtdeTotalComprada());
+        assertEquals(21, distribuidora.obterQtdeTotalComprada());
     }
-
 }

@@ -10,21 +10,46 @@ public class Distribuidora {
     private float despesaTotal;
 
 
-    public void setFornecedor(Pessoa fornecedor) {
-        this.fornecedor = fornecedor;
+    public Pessoa getFornecedor() {
+        return fornecedor;
     }
 
     public String getNomeDistribuidora() {
         return nomeDistribuidora;
     }
 
+    public void setFornecedor(Pessoa fornecedor) {
+        if (this.fornecedor != fornecedor) {
+            if (this.fornecedor != null) {
+                this.fornecedor.setNullFornecedorDistribuidora();
+            }
+            this.fornecedor = fornecedor;
+            if (this.fornecedor != null && this.fornecedor.getDistribuidora() != this) {
+                this.fornecedor.setDistribuidora(this);
+            }
+        }
+    }
+
     public void setNomeDistribuidora(String nomeDistribuidora) {
         this.nomeDistribuidora = nomeDistribuidora;
     }
 
-    public int getQtdeTotalComprada() {
+
+    public void setNullDistribuidoraFornecedor() {
+        this.fornecedor = null;
+    }
+
+    public String verificaDistribuidoraTemPessoaFornecedor() {
+        if (fornecedor == null) {
+            return "Fornecedor não informado.";
+        }
+        return fornecedor.getNome();
+    }
+
+    public int obterQtdeTotalComprada() {
         return qtdeCompradaTerror + qtdeCompradaFiccao + qtdeCompradaEscolar + qtdeCompradaReligiao + qtdeCompradaRomance;
     }
+
 
     public void compraLivroTerror(int qtdeCompradaTerror) {
         if (qtdeCompradaTerror <= 0) {
@@ -95,17 +120,9 @@ public class Distribuidora {
     }
 
     public float despesaTotalLivros() {
-        return despesaTotal = valorGastoCompraLivrosTerror() + valorGastoCompraLivrosFiccao() + valorGastoCompraLivrosEscolar()
-                + valorGastoCompraLivrosRomance() + valorGastoCompraLivrosReligiao();
+        return despesaTotal = valorGastoCompraLivrosTerror() + valorGastoCompraLivrosFiccao() + valorGastoCompraLivrosEscolar() +
+                valorGastoCompraLivrosRomance() + valorGastoCompraLivrosReligiao();
     }
-
-
-        public String verificaDistribuidoraTemPessoaFornecedor(){
-            if( fornecedor == null){
-                return "Fornecedor nao informado";
-            }
-            return fornecedor.getNome();
-        }
 }
 
 

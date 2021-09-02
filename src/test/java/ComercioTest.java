@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class                                                                                                                                                               ComercioTest {
+class ComercioTest {
 
     @Test
     void deveVerificarQtdeInvalidaVendaMinimaTerror() {
@@ -42,7 +42,7 @@ class                                                                           
     void deveVerificarQtdeInvalidaVendaMinimaFiccao() {
         try {
             Comercio cliente = new Comercio();
-            cliente.vendaLivroTerror(0);
+            cliente.vendaLivroFiccao(0);
         } catch (IllegalArgumentException e) {
             assertEquals("Venda não permitida!", e.getMessage());
         }
@@ -52,7 +52,7 @@ class                                                                           
     void deveVerificarQtdeInvalidaVendaMaximaFiccao() {
         try {
             Comercio cliente = new Comercio();
-            cliente.vendaLivroTerror(201);
+            cliente.vendaLivroFiccao(201);
         } catch (IllegalArgumentException e) {
             assertEquals("Venda além do limite do estoque!", e.getMessage());
         }
@@ -175,26 +175,41 @@ class                                                                           
     }
 
     @Test
-    void deveVerificarComercioTemClienteValido(){
+    void deveVerificarComercioTemClienteValido() {
         Comercio comercio = new Comercio();
-        Pessoa cliente = new Pessoa("Joao");
+        Pessoa cliente = new Pessoa("Nícolas");
         comercio.setNomeComercio("MN Livraria");
 
         comercio.setCliente(cliente);
-        assertEquals("Joao", comercio.verificaComercioTemPessoaCliente());
+        assertEquals("Nícolas", comercio.verificaComercioTemPessoaCliente());
     }
 
     @Test
-    void deveVerificarComercioSemCliente(){
+    void deveVerificarTrocaCliente() {
+        Comercio comercio = new Comercio();
+        Pessoa cliente1 = new Pessoa("Marcus");
+        comercio.setNomeComercio("MN Livraria");
+        comercio.setCliente(cliente1);
+
+        Pessoa cliente2 = new Pessoa("Vínicius");
+        comercio.setCliente(cliente2);
+
+        assertEquals(cliente1.getComercio(), null);
+        assertEquals("Vínicius", comercio.verificaComercioTemPessoaCliente());
+        assertEquals(cliente2.getNome(), comercio.getCliente().getNome());
+    }
+
+    @Test
+    void deveVerificarComercioSemCliente() {
         Comercio comercio = new Comercio();
         comercio.setNomeComercio("MN Livraria");
 
-        assertEquals("Comercio sem cliente", comercio.verificaComercioTemPessoaCliente());
+        assertEquals("Comércio sem cliente.", comercio.verificaComercioTemPessoaCliente());
 
     }
 
     @Test
-    void deveVerificarQuantidadeTotalVendida(){
+    void deveVerificarQuantidadeTotalVendida() {
         Comercio comercio = new Comercio();
 
         comercio.vendaLivroTerror(3);
@@ -203,6 +218,6 @@ class                                                                           
         comercio.vendaLivroRomance(2);
         comercio.vendaLivroReligiao(2);
 
-        assertEquals(14, comercio.getQtdeTotalVendida());
+        assertEquals(14, comercio.obterQtdeTotalVendida());
     }
 }

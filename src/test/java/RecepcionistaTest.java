@@ -7,7 +7,7 @@ class RecepcionistaTest {
     @Test
     void deveCalcularSalarioAtendente() {
         Comercio comercio = new Comercio();
-        Recepcionista recepcionista = new Recepcionista("Marcus", comercio);
+        Recepcionista recepcionista = new Recepcionista("Vinícius", comercio);
 
         comercio.vendaLivroTerror(3);
         comercio.vendaLivroFiccao(5);
@@ -22,10 +22,9 @@ class RecepcionistaTest {
     void deveVerificarComercioNulo() {
         try {
             Comercio comercio = new Comercio();
-            Recepcionista recepcionista = new Recepcionista("Marcus", null);
+            Recepcionista recepcionista = new Recepcionista("Nícolas", null);
         } catch (IllegalArgumentException e) {
-            assertEquals("Comércio é obrigatório", e.getMessage());
+            assertEquals("Comércio é obrigatório!", e.getMessage());
         }
     }
-
 }

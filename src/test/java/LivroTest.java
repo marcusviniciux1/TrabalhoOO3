@@ -5,22 +5,28 @@ import static org.junit.jupiter.api.Assertions.*;
 class LivroTest {
     @Test
     void deveVerificarLivroTemPessoaAutorValida(){
-        Livro livro = new Livro();
-        Pessoa autor = new Pessoa("J.R.R.TOLKIEN");
+        Pessoa autor = new Pessoa("J. R. R. Tolkien");
+        Livro livro = new Livro("Senhor dos Anéis", autor);
 
-        livro.setNomeLivro("Senhor dos Aneis");
-
-        livro.setAutor(autor);
-        assertEquals("J.R.R.TOLKIEN", livro.verificaLivroTemPessoaAutora());
+        assertTrue(livro.verificaLivroTemPessoaAutora());
     }
 
     @Test
     void deveVerificarLivroSemAutor(){
-        Livro livro = new Livro();
-
-        livro.setNomeLivro("Senhor dos Aneis");
-
-        assertEquals("Livro sem Autor", livro.verificaLivroTemPessoaAutora());
+        try {
+            Livro livro = new Livro("Senhor dos Anéis", null);
+        }catch (IllegalArgumentException e) {
+            assertEquals("Autor não informado.", e.getMessage());
+        }
     }
 
+    @Test
+    void deveVerificarNomeLivroNaoInformado(){
+        Pessoa autor = new Pessoa("J. R. R. Tolkien");
+        try {
+            Livro livro = new Livro(null, autor);
+        }catch (IllegalArgumentException e) {
+            assertEquals("Nome do livro não informado.", e.getMessage());
+        }
+    }
 }

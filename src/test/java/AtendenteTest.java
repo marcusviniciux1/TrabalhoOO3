@@ -22,10 +22,9 @@ class AtendenteTest {
     void deveVerificarComercioNulo() {
         try {
             Comercio comercio = new Comercio();
-            Atendente atendente = new Atendente("Marcus", null);
+            Atendente atendente = new Atendente("Vinícius", null);
         } catch (IllegalArgumentException e) {
-            assertEquals("Comércio é obrigatório", e.getMessage());
+            assertEquals("Comércio é obrigatório!", e.getMessage());
         }
     }
-
 }

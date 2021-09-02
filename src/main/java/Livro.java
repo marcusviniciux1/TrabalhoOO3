@@ -4,22 +4,28 @@ public class Livro {
     private String nomeLivro;
 
 
-    public void setAutor(Pessoa autor) {
+    public Livro(String nomeLivro, Pessoa autor) {
+        if (autor == null) {
+            throw new IllegalArgumentException("Autor não informado.");
+        }
+        if (nomeLivro == null) {
+            throw new IllegalArgumentException("Nome do livro não informado.");
+        }
         this.autor = autor;
+        this.autor.adicionaLivro(this);
+        this.nomeLivro = nomeLivro;
     }
+
 
     public String getNomeLivro() {
         return nomeLivro;
     }
 
-    public void setNomeLivro(String nomeLivro) {
-        this.nomeLivro = nomeLivro;
-    }
 
-    public String verificaLivroTemPessoaAutora(){
-        if(autor == null){
-            return "Livro sem Autor";
+    public boolean verificaLivroTemPessoaAutora() {
+        if (this.autor != null) {
+            return true;
         }
-        return autor.getNome();
+        return false;
     }
 }

@@ -10,21 +10,47 @@ public class Comercio {
     private float lucroTotal;
 
 
+    public Pessoa getCliente() {
+        return cliente;
+    }
+
     public String getNomeComercio() {
         return nomeComercio;
+    }
+
+    public void setCliente(Pessoa cliente) {
+        if (this.cliente != cliente) {
+            if (this.cliente != null) {
+                this.cliente.setNullClienteComercio();
+            }
+            this.cliente = cliente;
+            if (this.cliente != null && this.cliente.getComercio() != this) {
+                this.cliente.setComercio(this);
+            }
+        }
     }
 
     public void setNomeComercio(String nomeComercio) {
         this.nomeComercio = nomeComercio;
     }
 
-    public void setCliente(Pessoa cliente) {
-        this.cliente = cliente;
+
+    public void setNullComercioCliente() {
+        this.cliente = null;
     }
 
-    public int getQtdeTotalVendida() {
+    public String verificaComercioTemPessoaCliente() {
+        if (cliente == null) {
+            return "Comércio sem cliente.";
+        }
+        return cliente.getNome();
+
+    }
+
+    public int obterQtdeTotalVendida() {
         return qtdeVendidaTerror + qtdeVendidaFiccao + qtdeVendidaEscolar + qtdeVendidaReligiao + qtdeVendidaRomance;
     }
+
 
     public void vendaLivroTerror(int qtdeVendidaTerror) {
 
@@ -38,9 +64,9 @@ public class Comercio {
 
     public void vendaLivroFiccao(int qtdeVendidaFiccao) {
         if (qtdeVendidaFiccao <= 0) {
-            throw new IllegalArgumentException("Compra não permitida!");
+            throw new IllegalArgumentException("Venda não permitida!");
         } else if (qtdeVendidaFiccao > 200) {
-            throw new IllegalArgumentException("Compra além do limite do estoque!");
+            throw new IllegalArgumentException("Venda além do limite do estoque!");
         }
         this.qtdeVendidaFiccao = qtdeVendidaFiccao;
     }
@@ -98,14 +124,4 @@ public class Comercio {
         return lucroTotal = lucroLivrosVendidosFiccao() + lucroLivrosVendidosReligiao() + lucroLivrosVendidosEscolar() +
                 lucroLivrosVendidosRomance() + lucroLivrosVendidosTerror();
     }
-
-
-    public String verificaComercioTemPessoaCliente(){
-        if(cliente == null){
-            return "Comercio sem cliente";
-        }
-        return cliente.getNome();
-
-    }
-
 }

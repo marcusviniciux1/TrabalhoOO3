@@ -4,6 +4,7 @@ public class Lucro {
 
     private float lucroTotal;
 
+
     public Lucro(List<Comercio> comercios) {
         this.lucroTotal = 0;
 
@@ -11,6 +12,7 @@ public class Lucro {
             this.lucroTotal += comercio.lucroTotalLivros();
         }
     }
+
 
     public float getLucroTotal() {
         return this.lucroTotal;

@@ -7,7 +7,7 @@ class FaxineiroTest {
     @Test
     void deveCalcularSalarioFaxineiro() {
         Comercio comercio = new Comercio();
-        Faxineiro faxineiro = new Faxineiro("Marcus", comercio);
+        Faxineiro faxineiro = new Faxineiro("Nícolas", comercio);
 
         assertEquals(1100.0f, faxineiro.calcularSalario());
     }
@@ -18,8 +18,7 @@ class FaxineiroTest {
             Comercio comercio = new Comercio();
             Faxineiro faxineiro = new Faxineiro("Marcus", null);
         } catch (IllegalArgumentException e) {
-            assertEquals("Comércio é obrigatório", e.getMessage());
+            assertEquals("Comércio é obrigatório!", e.getMessage());
         }
     }
-
 }
