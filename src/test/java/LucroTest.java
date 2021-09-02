@@ -60,5 +60,4 @@ class LucroTest {
 
         assertEquals(36000, lucro.getLucroTotal());
     }
-
 }

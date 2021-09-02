@@ -7,6 +7,10 @@ public class Parametros_Comercio {
     private final static float VALOR_LIVRO_RELIGIAO = 15.0f;
 
 
+    public static float getValorLivroTerror() {
+        return VALOR_LIVRO_TERROR;
+    }
+
     public static float getValorLivroFiccao() {
         return VALOR_LIVRO_FICCAO;
     }
@@ -22,9 +26,4 @@ public class Parametros_Comercio {
     public static float getValorLivroReligiao() {
         return VALOR_LIVRO_RELIGIAO;
     }
-
-    public static float getValorLivroTerror() {
-        return VALOR_LIVRO_TERROR;
-    }
-
 }

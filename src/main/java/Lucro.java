@@ -7,14 +7,12 @@ public class Lucro {
     public Lucro(List<Comercio> comercios) {
         this.lucroTotal = 0;
 
-        for(Comercio comercio : comercios){
+        for (Comercio comercio : comercios) {
             this.lucroTotal += comercio.lucroTotalLivros();
         }
-
     }
 
     public float getLucroTotal() {
         return this.lucroTotal;
     }
-
 }

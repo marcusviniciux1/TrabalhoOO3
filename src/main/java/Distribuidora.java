@@ -1,72 +1,77 @@
-public class Distribuidor {
+public class Distribuidora {
 
-    private Pessoa Fornecedor;
-    private Livros autor;
-    private float despesaTotal;
-
+    private Pessoa fornecedor;
+    private String nomeDistribuidora;
     private int qtdeCompradaTerror;
     private int qtdeCompradaFiccao;
     private int qtdeCompradaEscolar;
     private int qtdeCompradaReligiao;
     private int qtdeCompradaRomance;
+    private float despesaTotal;
 
+
+    public void setFornecedor(Pessoa fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public String getNomeDistribuidora() {
+        return nomeDistribuidora;
+    }
+
+    public void setNomeDistribuidora(String nomeDistribuidora) {
+        this.nomeDistribuidora = nomeDistribuidora;
+    }
 
     public int getQtdeTotalComprada() {
         return qtdeCompradaTerror + qtdeCompradaFiccao + qtdeCompradaEscolar + qtdeCompradaReligiao + qtdeCompradaRomance;
     }
 
-    public void compraLivroTerror(int qtdeCompradaTerror){
-        if(qtdeCompradaTerror <= 0){
+    public void compraLivroTerror(int qtdeCompradaTerror) {
+        if (qtdeCompradaTerror <= 0) {
             throw new IllegalArgumentException("Compra não permitida!");
-        }
-        else if (qtdeCompradaTerror > 200){
+        } else if (qtdeCompradaTerror > 200) {
             throw new IllegalArgumentException("Compra além do limite do estoque!");
         }
         this.qtdeCompradaTerror = qtdeCompradaTerror;
     }
 
-    public void compraLivroFiccao(int qtdeCompradaFiccao){
-        if(qtdeCompradaFiccao <= 0){
+    public void compraLivroFiccao(int qtdeCompradaFiccao) {
+        if (qtdeCompradaFiccao <= 0) {
             throw new IllegalArgumentException("Compra não permitida!");
-        }
-        else if (qtdeCompradaFiccao > 200){
+        } else if (qtdeCompradaFiccao > 200) {
             throw new IllegalArgumentException("Compra além do limite do estoque!");
         }
         this.qtdeCompradaFiccao = qtdeCompradaFiccao;
     }
 
-    public void compraLivroEscolar(int qtdeCompradaEscolar){
+    public void compraLivroEscolar(int qtdeCompradaEscolar) {
 
-        if(qtdeCompradaEscolar <= 0){
+        if (qtdeCompradaEscolar <= 0) {
             throw new IllegalArgumentException("Compra não permitida!");
-        }
-        else if (qtdeCompradaEscolar > 200){
+        } else if (qtdeCompradaEscolar > 200) {
             throw new IllegalArgumentException("Compra além do limite do estoque!");
         }
         this.qtdeCompradaEscolar = qtdeCompradaEscolar;
     }
 
-    public void compraLivroRomance(int qtdeCompradaRomance){
-        if(qtdeCompradaRomance <= 0){
+    public void compraLivroRomance(int qtdeCompradaRomance) {
+        if (qtdeCompradaRomance <= 0) {
             throw new IllegalArgumentException("Compra não permitida!");
-        }
-        else if (qtdeCompradaRomance > 200){
+        } else if (qtdeCompradaRomance > 200) {
             throw new IllegalArgumentException("Compra além do limite do estoque!");
         }
         this.qtdeCompradaRomance = qtdeCompradaRomance;
     }
 
-    public void compraLivroReligiao(int qtdeCompradaReligiao){
+    public void compraLivroReligiao(int qtdeCompradaReligiao) {
 
-        if(qtdeCompradaReligiao <= 0){
+        if (qtdeCompradaReligiao <= 0) {
             throw new IllegalArgumentException("Compra não permitida!");
-        }
-        else if (qtdeCompradaReligiao > 200){
+        } else if (qtdeCompradaReligiao > 200) {
             throw new IllegalArgumentException("Compra além do limite do estoque!");
         }
         this.qtdeCompradaReligiao = qtdeCompradaReligiao;
     }
-
 
 
     public float valorGastoCompraLivrosTerror() {
@@ -93,4 +98,14 @@ public class Distribuidor {
         return despesaTotal = valorGastoCompraLivrosTerror() + valorGastoCompraLivrosFiccao() + valorGastoCompraLivrosEscolar()
                 + valorGastoCompraLivrosRomance() + valorGastoCompraLivrosReligiao();
     }
+
+
+        public String verificaDistribuidoraTemPessoaFornecedor(){
+            if( fornecedor == null){
+                return "Fornecedor nao informado";
+            }
+            return fornecedor.getNome();
+        }
 }
+
+

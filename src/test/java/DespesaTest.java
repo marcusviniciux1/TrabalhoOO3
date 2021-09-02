@@ -9,11 +9,11 @@ class DespesaTest {
 
     @Test
     void deveVerificarDespesaTotalMinima() {
-        Distribuidor distribuidor1 = new Distribuidor();
-        Distribuidor distribuidor2 = new Distribuidor();
-        Distribuidor distribuidor3 = new Distribuidor();
-        Distribuidor distribuidor4 = new Distribuidor();
-        Distribuidor distribuidor5 = new Distribuidor();
+        Distribuidora distribuidor1 = new Distribuidora();
+        Distribuidora distribuidor2 = new Distribuidora();
+        Distribuidora distribuidor3 = new Distribuidora();
+        Distribuidora distribuidor4 = new Distribuidora();
+        Distribuidora distribuidor5 = new Distribuidora();
 
         distribuidor1.compraLivroTerror(1);
         distribuidor2.compraLivroFiccao(1);
@@ -21,7 +21,7 @@ class DespesaTest {
         distribuidor4.compraLivroRomance(1);
         distribuidor5.compraLivroReligiao(1);
 
-        List<Distribuidor> distribuidorList = new ArrayList<Distribuidor>();
+        List<Distribuidora> distribuidorList = new ArrayList<Distribuidora>();
 
         distribuidorList.add(distribuidor1);
         distribuidorList.add(distribuidor2);
@@ -36,11 +36,11 @@ class DespesaTest {
 
     @Test
     void deveVerificarDespesaTotalMaxima() {
-        Distribuidor distribuidor1 = new Distribuidor();
-        Distribuidor distribuidor2 = new Distribuidor();
-        Distribuidor distribuidor3 = new Distribuidor();
-        Distribuidor distribuidor4 = new Distribuidor();
-        Distribuidor distribuidor5 = new Distribuidor();
+        Distribuidora distribuidor1 = new Distribuidora();
+        Distribuidora distribuidor2 = new Distribuidora();
+        Distribuidora distribuidor3 = new Distribuidora();
+        Distribuidora distribuidor4 = new Distribuidora();
+        Distribuidora distribuidor5 = new Distribuidora();
 
         distribuidor1.compraLivroTerror(200);
         distribuidor2.compraLivroFiccao(200);
@@ -48,7 +48,7 @@ class DespesaTest {
         distribuidor4.compraLivroRomance(200);
         distribuidor5.compraLivroReligiao(200);
 
-        List<Distribuidor> distribuidorList = new ArrayList<Distribuidor>();
+        List<Distribuidora> distribuidorList = new ArrayList<Distribuidora>();
 
         distribuidorList.add(distribuidor1);
         distribuidorList.add(distribuidor2);
@@ -60,5 +60,4 @@ class DespesaTest {
 
         assertEquals(15000, despesa.getDespesaTotal());
     }
-
 }

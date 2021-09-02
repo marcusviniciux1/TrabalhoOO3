@@ -6,6 +6,7 @@ public class Parametros_Distribuidor {
     private final static float PRECO_CUSTO_ROMANCE = 10.0f;
     private final static float PRECO_CUSTO_RELIGIAO = 5.0f;
 
+
     public static float getValorCustoTerror() {
         return PRECO_CUSTO_TERROR;
     }

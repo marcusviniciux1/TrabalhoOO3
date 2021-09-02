@@ -4,11 +4,11 @@ public class Despesa {
 
     private float despesaTotal;
 
-    public Despesa(List<Distribuidor> distribuidores) {
+    public Despesa(List<Distribuidora> distribuidores) {
         this.despesaTotal = 0;
 
-        for (Distribuidor distribuidor : distribuidores) {
-            this.despesaTotal += distribuidor.despesaTotalLivros();
+        for (Distribuidora distribuidora : distribuidores) {
+            this.despesaTotal += distribuidora.despesaTotalLivros();
         }
 
     }

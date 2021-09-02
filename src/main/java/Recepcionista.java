@@ -1,19 +1,19 @@
 public class Recepcionista extends Pessoa implements Funcionario {
 
-    private final static float salarioRecepcionista = 1100;
+    private final static float salarioRecepcionista = 1200.0f;
     private final static float precoPorLivroVendido = 5.0f;
-    private Comercio vendas;
+    private Comercio comercio;
 
-    Recepcionista(String nome) {
+    Recepcionista(String nome, Comercio comercio) {
         super(nome);
-    }
-
-    public float getSalarioRecepcionista() {
-        return salarioRecepcionista;
+        if (comercio == null){
+            throw new IllegalArgumentException("Comércio é obrigatório");
+        }
+        this.comercio = comercio;
     }
 
     @Override
     public float calcularSalario() {
-        return (salarioRecepcionista + (vendas.getQtdeTotalVendida() * precoPorLivroVendido));
+        return (salarioRecepcionista + (comercio.getQtdeTotalVendida() * precoPorLivroVendido));
     }
 }

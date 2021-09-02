@@ -2,7 +2,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ComercioTest {
+class                                                                                                                                                               ComercioTest {
+
     @Test
     void deveVerificarQtdeInvalidaVendaMinimaTerror() {
         try {
@@ -24,14 +25,14 @@ class ComercioTest {
     }
 
     @Test
-    void deveVerificarQtdeValidaVendaMinimaTerror(){
+    void deveVerificarQtdeValidaVendaMinimaTerror() {
         Comercio cliente = new Comercio();
         cliente.vendaLivroTerror(1);
         assertEquals(45.0f, cliente.lucroLivrosVendidosTerror());
     }
 
     @Test
-    void deveVerificarQtdeValidaVendaMaximaTerror(){
+    void deveVerificarQtdeValidaVendaMaximaTerror() {
         Comercio cliente = new Comercio();
         cliente.vendaLivroTerror(200);
         assertEquals(9000.0f, cliente.lucroLivrosVendidosTerror());
@@ -58,14 +59,14 @@ class ComercioTest {
     }
 
     @Test
-    void deveVerificarQtdeValidaVendaMinimaFiccao(){
+    void deveVerificarQtdeValidaVendaMinimaFiccao() {
         Comercio cliente = new Comercio();
         cliente.vendaLivroFiccao(1);
         assertEquals(60.0f, cliente.lucroLivrosVendidosFiccao());
     }
 
     @Test
-    void deveVerificarQtdeValidaVendaMaximaFiccao(){
+    void deveVerificarQtdeValidaVendaMaximaFiccao() {
         Comercio cliente = new Comercio();
         cliente.vendaLivroFiccao(200);
         assertEquals(12000.0f, cliente.lucroLivrosVendidosFiccao());
@@ -92,14 +93,14 @@ class ComercioTest {
     }
 
     @Test
-    void deveVerificarQtdeValidaVendaMinimaEscolar(){
-        Comercio cliente= new Comercio();
+    void deveVerificarQtdeValidaVendaMinimaEscolar() {
+        Comercio cliente = new Comercio();
         cliente.vendaLivroEscolar(1);
         assertEquals(25.0f, cliente.lucroLivrosVendidosEscolar());
     }
 
     @Test
-    void deveVerificarQtdeValidaVendaMaximaEscolar(){
+    void deveVerificarQtdeValidaVendaMaximaEscolar() {
         Comercio cliente = new Comercio();
         cliente.vendaLivroEscolar(200);
         assertEquals(5000.0f, cliente.lucroLivrosVendidosEscolar());
@@ -126,14 +127,14 @@ class ComercioTest {
     }
 
     @Test
-    void deveVerificarQtdeValidaVendaMinimaRomance(){
+    void deveVerificarQtdeValidaVendaMinimaRomance() {
         Comercio cliente = new Comercio();
         cliente.vendaLivroRomance(1);
         assertEquals(35.0f, cliente.lucroLivrosVendidosRomance());
     }
 
     @Test
-    void deveVerificarQtdeValidaVendaMaximaRomance(){
+    void deveVerificarQtdeValidaVendaMaximaRomance() {
         Comercio cliente = new Comercio();
         cliente.vendaLivroRomance(200);
         assertEquals(7000.0f, cliente.lucroLivrosVendidosRomance());
@@ -160,17 +161,48 @@ class ComercioTest {
     }
 
     @Test
-    void deveVerificarQtdeValidaVendaMinimaReligiao(){
+    void deveVerificarQtdeValidaVendaMinimaReligiao() {
         Comercio cliente = new Comercio();
         cliente.vendaLivroReligiao(1);
         assertEquals(15.0f, cliente.lucroLivrosVendidosReligiao());
     }
 
     @Test
-    void deveVerificarQtdeValidaVendaMaximaReligiao(){
+    void deveVerificarQtdeValidaVendaMaximaReligiao() {
         Comercio cliente = new Comercio();
         cliente.vendaLivroReligiao(200);
         assertEquals(3000.0f, cliente.lucroLivrosVendidosReligiao());
     }
 
+    @Test
+    void deveVerificarComercioTemClienteValido(){
+        Comercio comercio = new Comercio();
+        Pessoa cliente = new Pessoa("Joao");
+        comercio.setNomeComercio("MN Livraria");
+
+        comercio.setCliente(cliente);
+        assertEquals("Joao", comercio.verificaComercioTemPessoaCliente());
+    }
+
+    @Test
+    void deveVerificarComercioSemCliente(){
+        Comercio comercio = new Comercio();
+        comercio.setNomeComercio("MN Livraria");
+
+        assertEquals("Comercio sem cliente", comercio.verificaComercioTemPessoaCliente());
+
+    }
+
+    @Test
+    void deveVerificarQuantidadeTotalVendida(){
+        Comercio comercio = new Comercio();
+
+        comercio.vendaLivroTerror(3);
+        comercio.vendaLivroFiccao(5);
+        comercio.vendaLivroEscolar(2);
+        comercio.vendaLivroRomance(2);
+        comercio.vendaLivroReligiao(2);
+
+        assertEquals(14, comercio.getQtdeTotalVendida());
+    }
 }
